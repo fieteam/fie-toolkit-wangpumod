@@ -1,10 +1,11 @@
 module.exports = {
-  toolkit: 'fie-toolkit-wangpumod',
+  toolkit: "fie-toolkit-wangpumod",
   toolkitConfig: {
-    port: 9000,
+    host: "localhost",
+    port: 3000,
     open: true,
     log: true,
-    openTarget: 'demo/home.html',
-    liveload: false
+    openTarget: "index.html",
+    liveload: true
   }
 };

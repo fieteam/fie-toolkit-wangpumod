@@ -18,13 +18,13 @@
     "url": "git://github.com/fieteam/fie-toolkit-wangpumod.git"
   },
   "author": {
-    "name": "辟蹊",
-    "email": "hongbang.lhb@alibaba-inc.com"
+    "name": "bondli",
+    "email": "250934756@qq.com.com"
   },
   "maintainers": [
     {
-      "name": "辟蹊",
-      "email": "hongbang.lhb@alibaba-inc.com"
+      "name": "bondli",
+      "email": "250934756@qq.com.com"
     }
   ],
   "dependencies": {
