@@ -1,6 +1,6 @@
 import {createElement, Component, PropTypes} from 'rax';
 import View from 'rax-view';
-import Image from 'rax-image';
+import Picture from 'rax-picture';
 import Link from 'rax-link';
 
 import styles from './index.css';
@@ -63,6 +63,7 @@ class developingClassNameApp extends Component {
       cb && cb();
     }, (err) => {
       this.setState({
+        h5Url: '',
         mtopDone: true
       });
       cb && cb();
@@ -110,16 +111,16 @@ class developingClassNameApp extends Component {
     // 有数据
     if(showDataStatus){
       return (
-        <Link style={moduleContainerStyle} href={h5Url} onPress={()=>{this.goTargetUrl(h5Url, 0);}}>
-          <Image style={styles.pic} source={{uri: mds.moduleData.single_image_url}} />
+        <Link style={moduleContainerStyle} onPress={()=>{this.goTargetUrl(h5Url, 0);}} data-role={mds.moduleName} data-spmc={mds.widgetId} data-spmd="0">
+          <Picture style={styles.pic} source={{uri: mds.moduleData.single_image_url}} lazyload={true} />
         </Link>
       );
     }
     // 预览态无数据
     else if(showNoDataStatus) {
       return (
-        <View style={moduleContainerStyle}>
-          <Image style={styles.defaultImage} source={{uri: mds.defaultImage}} />
+        <View style={{marginBottom: gdc.spaceInBetween || 8}}>
+          <Picture style={styles.defaultImage} source={{uri: mds.defaultImage}} />
         </View>
       );
     }

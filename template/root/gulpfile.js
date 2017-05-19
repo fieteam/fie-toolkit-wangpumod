@@ -6,6 +6,9 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'),
     webpack = require('webpack'),
     pkg = require('./package.json'),
+    gulpRaxDebuger = require('gulp-rax-debuger'),
+    qrcode = require('qrcode-terminal'),
+    internalIp = require('internal-ip'),
     webConfig = require('./webpack.config.web'),
     weexConfig = require('./webpack.config.weex');
 
@@ -43,6 +46,22 @@ gulp.task('bundle:weex', function() {
     });
 });
 
+gulp.task('generate:weexdebug', function() {
+    gulp.src(['./build/weex-index.js'])
+        .pipe(gulpRaxDebuger())
+        .pipe(gulp.dest('./build/debuger/'))
+});
+
+gulp.task('show:debugercode', function() {
+    var ip = internalIp.v4();
+    var port = 3000;
+    var bundleUrl = 'http://' + ip + ':' + port + '/build/debuger/weex-index.js';
+    var weexBundleUrl = bundleUrl + '?_wx_tpl=' + bundleUrl;
+
+    qrcode.generate(weexBundleUrl, {small: true});
+    console.log('Weex: scan above QRCode ' + weexBundleUrl + ' use weex playground.\n');
+});
+
 /**
  * 构建供后端存储，端上调用的代码
  */
@@ -51,11 +70,11 @@ gulp.task('build:weex', [], function() {
 });
 
 gulp.task('default', function() {
-    gulp.watch(['./src/web/*.js','./src/web/*.scss','./pages/weex.js','./src/weex/*.js','./src/weex/*.css'], ['bundle:weex', 'build:web', 'build:weex']);
+    gulp.watch(['./src/web/*.js','./src/web/*.scss','./src/weex/*.js','./src/weex/*.css','./data/weex-mock.json'], ['bundle:weex', 'build:web', 'build:weex', 'generate:weexdebug']);
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['./src/web/*.js','./src/web/*.scss','./pages/weex.js','./src/weex/*.js','./src/weex/*.css'], ['bundle:weex', 'build:web', 'build:weex']);
+    gulp.watch(['./src/web/*.js','./src/web/*.scss','./src/weex/*.js','./src/weex/*.css','./data/weex-mock.json'], ['bundle:weex', 'build:web', 'build:weex', 'generate:weexdebug']);
 });
 
-gulp.task('build', ['bundle:weex', 'build:weex', 'build:web']);
+gulp.task('build', ['bundle:weex', 'build:weex', 'build:web', 'generate:weexdebug', 'show:debugercode']);
