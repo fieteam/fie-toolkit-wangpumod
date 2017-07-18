@@ -20,16 +20,15 @@
 - 模块的样式编写是采用的flex-box布局：可以学习下flexbox布局：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool
 - 如果模块有访问淘系的接口，先配置一个host,如：127.0.0.1 local.m.taobao.com
 - 执行 fie start 之后，将浏览器打开的模块的地址由localhost，改成 local.m.taobao.com，这样本地可以访问接口；
-- 目前模块能允许使用的rax标签有：View, Picture, Link, Text, ScrollView，其他后续开放;
+- 目前模块能允许使用的rax标签有：View, Picture, Touchable, Text, ScrollView，其他后续开放;
 - 因为最后的代码是通过复制到阿里这边的一个设计师后台，所以每个模块的样式文件不要单独出来，在模块的js代码中，这样定义：
 
 ```javascript
 import {createElement, Component, PropTypes} from 'rax';
 import View from 'rax-view';
 import Picture from 'rax-picture';
-import Link from 'rax-link';
+import Touchable from 'rax-touchable';
 
-//import styles from './index.css';
 const styles = {
   wrapper: {
     width: 750,
@@ -55,20 +54,26 @@ const styles = {
 import {createElement, Component, PropTypes} from 'rax';
 import View from 'rax-view';
 import Picture from 'rax-picture';
-import Link from 'rax-link';
+import Touchable from 'rax-touchable';
 
-// 这一行是引入样式，请改成上面的内部定义样式
-import styles from './index.css';
+// 这一行是定义模块上的各种样式
+const styles = {
+  wrapper: {
+    width: 750,
+    backgroundColor: '#ffffff'
+  },
+  defaultImage: {
+    width: 750,
+    height: 400
+  }
+  pic: {
+    width: 750,
+    height: 470
+  }
+};
 
 // 定义一个模块的class
 class developingClassNameApp extends Component {
-  // 这里的contextTypes是从页面中获取的全局变量，模块中使用的时候是：this.context.Mtop 这种
-  static contextTypes = {
-    goTargetUrl: PropTypes.func, //链接跳转函数
-    Mtop: PropTypes.object,      //Mtop:获取淘系的数据接口对象
-    User: PropTypes.object,      //User:可以用来判断是否登录和跳转到登录页的对象：this.context.User.isLogin() this.context.User.login()
-    Windvane: PropTypes.object   //Windvane:用来调用客户端功能的对象
-  };
 
   // 这里的state是定义该模块下需要用到的状态变量，可以先了解下react的state
   state = {
@@ -84,6 +89,9 @@ class developingClassNameApp extends Component {
   constructor (props) {
     super(props);
 
+    //从页面上获取各种可以用的工具，如 Mtop, Windvane, goTargetUrl
+    this.pageUtils = props.pageUtils;
+
     // 模块被初始化后从模块属性中获取模块要用到的数据和全局数据
     this.state = {
       mds: this.props.mds || {},
@@ -97,7 +105,7 @@ class developingClassNameApp extends Component {
   getData = (cb) => {
     let {mds, gdc} = this.state;
 
-    this.context.Mtop.request({
+    this.pageUtils.Mtop.request({
       api: 'mtop.taobao.shop.ugo.geth5url',
       v: '1.0',
       data: {
@@ -164,13 +172,13 @@ class developingClassNameApp extends Component {
       moduleName: mds.moduleName
     };
 
-    this.context.goTargetUrl && this.context.goTargetUrl(params);
+    this.pageUtils.goTargetUrl && this.pageUtils.goTargetUrl(params);
   }
 
   /**
    * 渲染模块函数
-   * 1、在showDataStatus=true的时候的根标签下需要定义标签的属性：data-role={mds.moduleName} data-spmc={mds.widgetId}
-   * 2、在Link标签上需要定义一个属性：data-spmd="0" 这里的0是可以自定义的，需要保持和goTargetUrl第二个参数一致
+   * 1、在showDataStatus=true的时候的根标签下需要定义标签的属性：data-role={mds.moduleName} data-spmc={mds.moduleName + 下划线 + mds.widgetId}
+   * 2、在Touchable标签上需要定义一个属性：data-spmd={mds.moduleName + 下划线 + mds.widgetId + 模块内的链接索引}
    * 3、在showNoDataStatus=true的时候一定要定义有默认图输出，否则装修端无数据的时候将看不到
    */
   render() {
@@ -181,18 +189,22 @@ class developingClassNameApp extends Component {
 
     // 有数据
     if(showDataStatus){
+      //是否装修端预览态
+      const isPreview = (gdc.preView == true || gdc.preView == 'true') ? true : false;
+      //根据是否预览态确定图片是否要懒加载
+      const lazyload = isPreview ? false : true;
       return (
-        <Link style={moduleContainerStyle} onPress={()=>{this.goTargetUrl(h5Url, 0);}} data-role={mds.moduleName} data-spmc={mds.widgetId} data-spmd="0">
-          <Picture style={styles.pic} source={{uri: mds.moduleData.single_image_url}} lazyload={true} />
-        </Link>
+        <Touchable style={styles.wrapper} onPress={()=>{this.goTargetUrl(h5Url, 0);}} data-role={mds.moduleName} data-spmc={mds.moduleName + '_' + mds.widgetId} data-spmd={mds.moduleName + '_' + mds.widgetId + '_0'}>
+          <Picture style={styles.pic} source={{uri: mds.moduleData.single_image_url}} lazyload={lazyload} />
+        </Touchable>
       );
     }
     // 预览态无数据
     else if(showNoDataStatus) {
       return (
-        <View style={{marginBottom: gdc.spaceInBetween || 8}}>
-          <Picture style={styles.defaultImage} source={{uri: mds.defaultImage}} />
-        </View>
+        <Picture
+          style={{...styles.defaultImage, width: mds.defaultImageWidth || 750, height: mds.defaultImageHeight || 400}}
+          source={{uri: mds.defaultImage}} lazyload={false} />
       );
     }
     return null;

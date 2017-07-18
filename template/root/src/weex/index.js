@@ -1,17 +1,24 @@
 import {createElement, Component, PropTypes} from 'rax';
 import View from 'rax-view';
 import Picture from 'rax-picture';
-import Link from 'rax-link';
+import Touchable from 'rax-touchable';
 
-import styles from './index.css';
+const styles = {
+  wrapper: {
+    width: 750,
+    backgroundColor: '#ffffff'
+  },
+  defaultImage: {
+    width: 750,
+    height: 400
+  }
+  pic: {
+    width: 750,
+    height: 470
+  }
+};
 
 class developingClassNameApp extends Component {
-  static contextTypes = {
-    goTargetUrl: PropTypes.func,
-    Mtop: PropTypes.object,
-    User: PropTypes.object,
-    Windvane: PropTypes.object
-  };
 
   state = {
     showDataStatus: false,
@@ -26,6 +33,8 @@ class developingClassNameApp extends Component {
   constructor (props) {
     super(props);
 
+    this.pageUtils = props.pageUtils;
+
     this.state = {
       mds: this.props.mds || {},
       gdc: this.props.gdc || {}
@@ -38,7 +47,7 @@ class developingClassNameApp extends Component {
   getData = (cb) => {
     let {mds, gdc} = this.state;
 
-    this.context.Mtop.request({
+    this.pageUtils.Mtop.request({
       api: 'mtop.taobao.shop.ugo.geth5url',
       v: '1.0',
       data: {
@@ -99,29 +108,28 @@ class developingClassNameApp extends Component {
       moduleName: mds.moduleName
     };
 
-    this.context.goTargetUrl && this.context.goTargetUrl(params);
+    this.pageUtils.goTargetUrl && this.pageUtils.goTargetUrl(params);
   }
 
   render() {
     let {showDataStatus, showNoDataStatus, h5Url, mds, gdc} = this.state;
 
-    let moduleContainerStyle = styles.wrapper;
-    moduleContainerStyle.marginBottom = gdc.spaceInBetween || 8;
-
     // 有数据
     if(showDataStatus){
+      const isPreview = (gdc.preView == true || gdc.preView == 'true') ? true : false;
+      const lazyload = isPreview ? false : true;
       return (
-        <Link style={moduleContainerStyle} onPress={()=>{this.goTargetUrl(h5Url, 0);}} data-role={mds.moduleName} data-spmc={mds.widgetId} data-spmd="0">
-          <Picture style={styles.pic} source={{uri: mds.moduleData.single_image_url}} lazyload={true} />
-        </Link>
+        <Touchable style={styles.wrapper} onPress={()=>{this.goTargetUrl(h5Url, 0);}} data-role={mds.moduleName} data-spmc={mds.moduleName + '_' + mds.widgetId} data-spmd={mds.moduleName + '_' + mds.widgetId + '_0'}>
+          <Picture style={styles.pic} source={{uri: mds.moduleData.single_image_url}} lazyload={lazyload} />
+        </Touchable>
       );
     }
     // 预览态无数据
     else if(showNoDataStatus) {
       return (
-        <View style={{marginBottom: gdc.spaceInBetween || 8}}>
-          <Picture style={styles.defaultImage} source={{uri: mds.defaultImage}} />
-        </View>
+        <Picture
+          style={{...styles.defaultImage, width: mds.defaultImageWidth || 750, height: mds.defaultImageHeight || 400}}
+          source={{uri: mds.defaultImage}} lazyload={false} />
       );
     }
     return null;
