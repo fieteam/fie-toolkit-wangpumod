@@ -1,6 +1,6 @@
 {
   "name": "fie-toolkit-wangpumod",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "fie-toolkit-wangpumod description",
   "main": "index.js",
   "fieOption": {
@@ -44,6 +44,11 @@
       "version": "1.0.0",
       "log": [
         "新增初始化模板功能"
+      ]
+    },{
+      "version": "1.0.1",
+      "log": [
+        "优化模板"
       ]
     }
   ],

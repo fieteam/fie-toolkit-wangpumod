@@ -11,7 +11,7 @@ const styles = {
   defaultImage: {
     width: 750,
     height: 400
-  }
+  },
   pic: {
     width: 750,
     height: 470
