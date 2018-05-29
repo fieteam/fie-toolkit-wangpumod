@@ -1,14 +1,14 @@
-# developing-project-name
+# <{%= fileName %}>
 
-> 旺铺模块 developing-project-name
+> 国际化店铺模块 <{%= fileName %}>
 
 ### 无线端截图
 
-![](https://img.alicdn.com/tps/TB1SHMMLXXXXXalXpXXXXXXXXXX-1540-2708.jpg_640x640)
+![](https://img.alicdn.com/tps/TB1GTEtLXXXXXbOXVXXXXXXXXXX-1544-2700.jpg_640x640)
 
 ### PC端截图
 
-无
+![](https://img.alicdn.com/tps/TB1GTEtLXXXXXbOXVXXXXXXXXXX-1544-2700.jpg_640x640)
 
 ### 如何开始
 

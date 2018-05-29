@@ -28,12 +28,79 @@
     }
   ],
   "dependencies": {
+    "@alife/babel-preset-fusion": "^0.2.2",
+    "@alife/fusion-external-webpack-plugin": "^1.0.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-module-alias": "^1.6.0",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-assign": "~6.5.0",
+    "babel-plugin-transform-react-display-name": "^6.5.0",
+    "babel-plugin-transform-require-ignore": "0.0.2",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-plugin-typecheck": "^3.7.0",
+    "babel-plugin-webpack-loaders": "^0.3.0",
+    "babel-polyfill": "~6.8.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-rax": "^0.2.11",
+    "babel-preset-react": "~6.5.0",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-register": "~6.7.2",
+    "babel-runtime": "^6.11.6",
     "chalk": "^1.1.3",
+    "classnames": "~2.2.5",
+    "co": "^4.6.0",
+    "console-polyfill": "^0.2.2",
     "cross-spawn": "~4.0.0",
+    "css-loader": "~0.23.1",
     "debug": "^2.2.0",
-    "open": "0.0.5",
+    "es3ify-loader": "^0.1.0",
+    "es5-shim": "^4.4.1",
+    "es6-promise": "^3.0.2",
+    "eslint": "^3.15.0",
+    "eslint-config-ali": "^1.0.0",
+    "eslint-plugin-react": "~5.0.1",
+    "extract-text-webpack-plugin": "~1.0.1",
+    "fetch": "^1.1.0",
+    "fetch-ie8": "^1.4.0",
+    "fetch-jsonp": "^1.0.1",
+    "fie-api": "^1.3.8",
+    "fie-plugin-server": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "~6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-rax-debuger": "^0.0.8",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "~0.5.4",
+    "gulp-rm": "^1.0.2",
+    "gulp-sequence": "^1.0.0",
+    "gulp-util": "~3.0.7",
+    "inquirer": "^1.0.2",
+    "internal-ip": "^1.2.0",
+    "jquery": "^3.2.1",
+    "jsdom": "^9.8.3",
+    "koa": "^1.2.0",
+    "koa-static": "^2.0.0",
+    "node-fetch": "^1.7.3",
+    "node-sass": "^4.9.0",
+    "open": "^0.0.5",
+    "postcss-wrapper-loader": "^0.0.2",
+    "qrcode-terminal": "^0.11.0",
+    "rax-webpack-plugin": "^0.3.3",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "sass-loader": "^4.0.0",
+    "static-server": "0.0.41",
+    "static-server-advance": "^2.0.6",
+    "style-loader": "~0.13.1",
+    "stylesheet-loader": "^0.3.4",
+    "sync-request": "^6.0.0",
     "underscore": "^1.8.3",
-    "fie-api": "^1.3.5"
+    "webpack": "^1.13.1",
+    "webpack-bundle-analyzer": "^2.9.0"
   },
   "devDependencies": {
     "eslint": "^3.15.0",
@@ -45,12 +112,14 @@
       "log": [
         "新增初始化模板功能"
       ]
-    },{
+    },
+    {
       "version": "1.0.1",
       "log": [
         "优化模板"
       ]
-    },{
+    },
+    {
       "version": "1.0.2",
       "log": [
         "解决开启服务器是端口和路径错误的bug"

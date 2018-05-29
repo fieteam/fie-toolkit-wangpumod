@@ -1,0 +1,30 @@
+{
+  "gdc": {
+    "preView": true,
+    "preview": true,
+    "pageId": 75527005,
+    "userId": 2202220535,
+    "shopId": 112772958,
+    "userNick": "userNick",
+    "pageName": "Page_WeApp"
+  },
+  "mds": {
+    "moduleName": "<{%= moduleName %}>",
+    "moduleNameAlias": "<{%= fileName %}>",
+    "assetsPackageName": "<{%= groupName %}>",
+    "componetId": "36171",
+    "widgetId": "99999",
+    "isEmpty": "false",
+    "defaultImage": "http://gtms02.alicdn.com/tps/i2/TB1VGOiFVXXXXcraXXXGJ_gSVXX-304-170.png",
+    "moduleData": {
+      "single_image_url": "//gw.alicdn.com/tps/TB181ekIFXXXXbyXXXXXXXXXXXX.jpg",
+      "h5Url": "https://www.taobao.com",
+      "asynData": {
+        "url": "/data/weex-mock.json",
+        "param": {
+          "id": 1
+        }
+      }
+    }
+  }
+}

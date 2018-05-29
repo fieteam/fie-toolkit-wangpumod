@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <meta content="yes" name="apple-touch-fullscreen" />
+        <meta content="telephone=no,email=no" name="format-detection" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+        <title>模块:<{%= fileName %}></title>
+        <link rel="stylesheet" type="text/css" href="<{%= renderCss %}>">
+    </head>
+    <body data-spm="3745-b-s" id="shoplayout1" data-title="测试模块标题">
+        <div class="J_module" id="layout1" module-id="layout1" module-name="<{%= fileName %}>" module-vers="0.0.1" module-data='
+            {
+                "gdc":{
+                    "preView": true,
+                    "pageId": 75527005,
+                    "userId": 2202220535,
+                    "shopId": 112772958,
+                    "userNick": "userNick",
+                    "pageName": "Page_WeApp"
+                },
+                "mds":{
+                    "moduleName": "<{%= moduleName %}>",
+                    "componetId": "36171",
+                    "widgetId": "99999",
+                    "isEmpty": "false",
+                    "defaultImage": "http://gtms02.alicdn.com/tps/i2/TB1VGOiFVXXXXcraXXXGJ_gSVXX-304-170.png",
+                    "moduleData": {
+                        "asynData": {
+                            "url": "/data/web-mock.json",
+                            "param": {"id": 1}
+                        },
+                        "single_image_url": "//gw.alicdn.com/tps/TB181ekIFXXXXbyXXXXXXXXXXXX.jpg",
+                        "url": "https://www.taobao.com"
+                    }
+                }
+            }'>
+        </div>
+        <script src="<{%= renderJs %}>" defer></script>
+    </body>
+</html>

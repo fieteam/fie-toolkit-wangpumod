@@ -1,0 +1,29 @@
+{
+  "name": "<{%= fileName %}>",
+  "version": "0.0.1",
+  "keywords": [],
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/"
+  },
+  "devDependencies": {
+    "eslint": "^4.1.1",
+    "eslint-config-ali": "^2.0.0",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-react": "^7.1.0"
+  },
+  "dependencies": {
+    "rax": "0.6.3",
+    "rax-text": "0.6.3",
+    "rax-view": "0.6.3",
+    "rax-picture": "0.6.3",
+    "rax-touchable": "0.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:<{%= groupName %}>/<{%= fileName %}>"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  }
+}

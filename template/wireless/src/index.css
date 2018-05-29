@@ -1,0 +1,16 @@
+.wrapper {
+  width: 750;
+  height: 270;
+  margin-bottom: 24;
+  background-color: #ff0000;
+}
+.title {
+  font-size: 14px;
+  color: #ff0000;
+}
+.pic {
+  width: 750;
+}
+.defaultImage {
+  width: 750;
+}

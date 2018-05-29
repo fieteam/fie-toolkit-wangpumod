@@ -1,0 +1,51 @@
+{
+  "name": "<{%= fileName %}>",
+  "version": "0.0.1",
+  "keywords": [],
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/"
+  },
+  "devDependencies": {
+    "@alife/babel-preset-fusion": "^0.2.2",
+    "@alife/module-globalvar-loader": "*",
+    "@alife/wrapper-sass-loader": "*",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-assign": "~6.5.0",
+    "babel-plugin-transform-react-display-name": "^6.5.0",
+    "babel-plugin-transform-require-ignore": "0.0.2",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-plugin-typecheck": "^3.7.0",
+    "babel-plugin-webpack-loaders": "^0.3.0",
+    "babel-polyfill": "~6.8.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "~6.5.0",
+    "babel-preset-stage-0": "~6.3.13",
+    "babel-register": "~6.7.2",
+    "babel-runtime": "^6.11.6",
+    "css-loader": "~0.23.1",
+    "es3ify-loader": "^0.1.0",
+    "eslint": "^4.1.1",
+    "eslint-config-ali": "^2.0.0",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-react": "^7.1.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "~0.13.1"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:intl-shopmod/<{%= fileName %}>"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  }
+}
