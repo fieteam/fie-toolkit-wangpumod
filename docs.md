@@ -7,12 +7,18 @@
 - 检查是否安装成功：fie -v 详细安装说明：https://github.com/fieteam/fie
 - 安装本工具：fie install toolkit-wangpumod
 
-### 使用
+### 新建一个模块
 
-- 在本地创建一个需要开发的目录，目录名必须是字母
-- 进入上面创建的目录，执行：fie init wangpumod
-- 会生成一个示例模块的代码；
-- 执行 fie start 开始开发，可以看到该模块可以跑起来；
+- 本地创建一个文件夹，文件夹名称由三部分组成：**业务域+模块类型+模块名**
+	- 例如： fliggy-wl-testMod、fliggy-pc-testMod
+- **wl表示为无线模块，pc表示为PC模块**
+- 当前支持的业务域
+	- fliggy 飞猪
+	- taobao 淘系
+	- icbu ICBU
+- 在文件夹根目录执行 fie init wangpumod
+	- **不符合规则的文件夹无法执行init操作**
+- 执行 `fie start` 开始开发，可以看到该模块可以跑起来
 
 ### 注意点
 

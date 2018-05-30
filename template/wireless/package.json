@@ -18,12 +18,5 @@
     "rax-view": "0.6.3",
     "rax-picture": "0.6.3",
     "rax-touchable": "0.6.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:<{%= groupName %}>/<{%= fileName %}>"
-  },
-  "publishConfig": {
-    "registry": "http://registry.npm.alibaba-inc.com"
   }
 }

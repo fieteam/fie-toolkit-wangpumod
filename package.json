@@ -19,12 +19,16 @@
   },
   "author": {
     "name": "bondli",
-    "email": "250934756@qq.com.com"
+    "email": "250934756@qq.com"
   },
   "maintainers": [
     {
       "name": "bondli",
-      "email": "250934756@qq.com.com"
+      "email": "250934756@qq.com"
+    },
+    {
+      "name": "Excelsior-WYH",
+      "email": "1419290661@qq.com"
     }
   ],
   "dependencies": {
@@ -123,6 +127,12 @@
       "version": "1.0.2",
       "log": [
         "解决开启服务器是端口和路径错误的bug"
+      ]
+    },
+    {
+      "version": "2.0.0",
+      "log": [
+        "新增多个业务域支持，与intlsmod保持一致"
       ]
     }
   ],
